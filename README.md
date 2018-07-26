@@ -6,7 +6,7 @@ Gilded Rose Expansion Application
 
 The Application Supports following REST ENDPOINTS
 ------------------------------------------------------------------------------------------------------
-Method   URL                                       Description
+Method:   URL                                      :Description
                                          
 ------------------------------------------------------------------------------------------------------
 GET:      /public/items                           :Provides the list of items in the inventory.
