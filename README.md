@@ -9,28 +9,28 @@ The Application Supports following REST ENDPOINTS
 Method   URL                                       Description
                                          
 ------------------------------------------------------------------------------------------------------
-GET      /public/items                             Provides the list of items in the inventory.
+GET:      /public/items                           :Provides the list of items in the inventory.
                                                    Does not require user authentication.
 
-GET      /public/items/{itemname}                  Provides the details of an item with the itemname
+GET:      /public/items/{itemname}                :Provides the details of an item with the itemname
                                                    given in the path variable of the url if it
                                                    exists in in the inventory.
                                                    Does not require user authentication.
 
-GET      /item/buy                                 Provides a form that can be used to submit a
+GET:      /item/buy                               :Provides a form that can be used to submit a
                                                    request to buy an item.
                                                    Requires user authentication.
 
-POST     /item/buy                                 Handles the request posted by buy form.
+POST:     /item/buy                               :Handles the request posted by buy form.
                                                    Requires user authentication.
 
-GET      /login                                    Provides login form that can be used
+GET:      /login                                  :Provides login form that can be used
                                                    to request for authentication.
 
-POST     /login                                    Handles authentication request posted by
+POST:     /login                                  :Handles authentication request posted by
                                                    by login form.
 
-POST     /logout                                   Handles logout request.
+POST:     /logout                                 :Handles logout request.
 
 ----------------------------------------------------------------------------------------------------
 
