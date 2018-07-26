@@ -6,8 +6,8 @@ Gilded Rose Expansion Application
 
 The Application Supports following REST ENDPOINTS
 ------------------------------------------------------------------------------------------------------
-Method   URL                       Request         Description
-                                   Parameters      
+Method   URL                                       Description
+                                         
 ------------------------------------------------------------------------------------------------------
 GET      /public/items                             Provides the list of items in the inventory.
                                                    Does not require user authentication.
@@ -21,14 +21,14 @@ GET      /item/buy                                 Provides a form that can be u
                                                    request to buy an item.
                                                    Requires user authentication.
 
-POST     /item/buy                 itemname        Handles the request posted by buy form.
+POST     /item/buy                                 Handles the request posted by buy form.
                                                    Requires user authentication.
 
 GET      /login                                    Provides login form that can be used
                                                    to request for authentication.
 
-POST     /login                    username        Handles authentication request posted by
-                                   password        by login form.
+POST     /login                                    Handles authentication request posted by
+                                                   by login form.
 
 POST     /logout                                   Handles logout request.
 
