@@ -22,7 +22,7 @@ public class PriceServiceTests extends ApplicationTests{
 		priceService.setVisitThreshold(visitThreshold);
 		priceService.setSurgePercentage(surgePercentage);
 		
-		for(int i=0; i<visitThreshold; i++) {
+		for(int i=1; i<visitThreshold; i++) {
 			surgePricedItem = priceService.surgedPricedItem(item);
 			Assert.assertTrue(surgePricedItem.getPrice() == regularPrice);
 		}

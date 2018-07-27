@@ -225,15 +225,15 @@ public class InventoryService {
 	 * @return
 	 */
 	public Item surgedPricedItem(String itemname) {
-		Item item = null;
+		Item itemResult = null;
 		InventoryItem inventoryItem = getInventoryItem(itemname);
 		if(inventoryItem != null) {
-			item = inventoryItem.getItem();
+			Item item = inventoryItem.getItem();
 			if(item !=null) {
-				item = priceService.surgedPricedItem(item);
+				itemResult = priceService.surgedPricedItem(item);
 			}
 		}
-		return item;
+		return itemResult;
 	}
 	
 	/**

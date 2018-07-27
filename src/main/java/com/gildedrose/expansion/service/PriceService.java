@@ -4,6 +4,8 @@ import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -22,12 +24,14 @@ import com.gildedrose.expansion.model.Item;
 @Service
 public class PriceService {
 	
+	Logger logger = Logger.getLogger("PriceService");
+	
 	public static final long DEFAULT_SURGE_INTERVAL= 60*60*1000L; //500ms for unit test, One hour or 60*60*1000 ms for production
 	public static final int DEFAULT_VISIT_THRESHOLD = 10;
 	public static final int DEFAULT_SURGE_PERCENTGE = 10;
 	public static double HUNDRED_IN_DOUBLE = 100.0;
 	
-	Map<Item, Integer> visitMap = new ConcurrentHashMap<>(); 
+	static final Map<String, Integer> visitMap = new ConcurrentHashMap<>(); 
 	
 	private int visitThreshold = DEFAULT_VISIT_THRESHOLD;;
 	private int surgePercentage = DEFAULT_SURGE_PERCENTGE;
@@ -69,10 +73,10 @@ public class PriceService {
 	 */
 	public Item surgedPricedItem(final Item item) {
 		Item itemCopy = item.getCopy();
-		int visits = getVisits(item);
+		int visits = getVisits(item.getName());
 		visits++;
-		setVisits(item, visits);
-		if(visits>visitThreshold) {
+		setVisits(item.getName(), visits);
+		if(visits > visitThreshold) {
 			itemCopy.setPrice((int)(item.getPrice()*(HUNDRED_IN_DOUBLE + surgePercentage)/HUNDRED_IN_DOUBLE));
 		}
 		return itemCopy;
@@ -83,8 +87,8 @@ public class PriceService {
 	 * @param item
 	 * @param visits
 	 */
-	private void setVisits(Item item, int visits) {
-		visitMap.put(item, visits);
+	private void setVisits(String itemname, int visits) {
+		visitMap.put(itemname, visits);
 	}
 	
 	/**
@@ -92,9 +96,9 @@ public class PriceService {
 	 * @param item
 	 * @return
 	 */
-	private int getVisits(Item item) {
-		if(visitMap.isEmpty()== false && visitMap.containsKey(item)) {
-			return visitMap.get(item);
+	private int getVisits(String itemname) {
+		if(visitMap.isEmpty()== false && visitMap.containsKey(itemname)) {
+			return visitMap.get(itemname);
 		}
 		return 0;
 	}
