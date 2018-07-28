@@ -93,10 +93,10 @@ Surge Price Modeling
 ------------------------------------------------------------------------------------------------
 PriceService class in the Application is a Spring Service which has the implementation of Surge
 pricing business logic. It maintains a map object in the memory to keep track of item views.
-In the map object items are inserted as the key and its view count as the value against the key.
+In the map object item names are inserted as the key and its view count as the value against the key.
 When an item details is viewed using single item view rest end-point, the map is checked whether
 this item has been viewed before or not. If the item was viewed before, the map will have an entry
-with the item as the key and the number of views in the past as the value. In this case, the
+with the item name as the key and the number of views in the past as the value. In this case, the
 view count is incremented and put back into the map. If the view count of the item exceeds the
 view threshold of surge price, item price is surged using surge percentage. If the view count is
 less than the threshold, item price remains unchanged. This price change only happens in the
